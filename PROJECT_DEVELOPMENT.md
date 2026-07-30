@@ -14,10 +14,11 @@ I will design a system that detects door movement, emitting the noise of sharp b
 2. Red LED starts flashing once movement is detected but does not turn off when the door is closed after the initial intrusion
 3. The adhesive for the "security system" should keep the circuit in place as to not disrupt the sensor input/outputs
 4. Button on the side turns off the LED once the user gives it an input (pushing it)
+5. Green LED flashes at a constant slow pace when no movement is detected
 
 ### Functional Requirements
 1. **Ultrasonic Sensor Input** --> *If ultrasonic sensor starts detecting an obstructive object, piezo begins emitting a beep consecutively for 30 seconds*
-2. **LED Output** --> *If an obstruction is detected, the red LED starts flashing consecutively until a manual reset of the system*
+2. **LED Output** --> *If an obstruction is detected, the red LED starts flashing consecutively until a manual reset of the system occurs; if no obstruction is detected, green LED stays on, flashing at a slow and constant pace*
 3. **Adhesive** -->  *Adhesive consistently remains able to keep the system in place*
 4. **Button input** --> *Button pressing must immediately turn of the LED output*
 
@@ -36,8 +37,47 @@ Some non-functional requirements necessary to keep the security system optimised
 
 ## Algorithms
 ### Pseudocode
-
+```
+BEGIN intrusion_protocol()
+    WHILE true
+        READ button.value()
+        IF button.value() = 0
+            OUTPUT red_Led.value(1)
+            time.sleep(0.5)
+            OUTPUT red_Led.value(0)
+            time.sleep(0.5) 
+            OUTPUT buzzer.on
+        ELSE
+            ENDWHILE
+        ENDIF
+    ENDWHILE
+END
+```
+```
+BEGIN safety_protocol()
+    WHILE true
+        OUTPUT green_Led.value(1)
+        time.sleep(0.5)
+        OUTPUT green_Led.value(0)
+        time.sleep(0.5)
+    ENDWHILE
+END
+```
+```
+BEGIN
+    READ normal_time
+    WHILE true
+        READ current_time
+        IF current_time < normal_time
+            intrusion_protocol()
+        ELSE
+            safety_protocol()
+        ENDIF
+    ENDWHILE
+END
+```     
 ### Flowchart Development
+
 
 ## Development and Intergration
 ### Successful Code
