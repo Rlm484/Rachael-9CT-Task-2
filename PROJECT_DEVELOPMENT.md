@@ -55,12 +55,10 @@ END
 ```
 ```
 BEGIN safety_protocol()
-    WHILE true
-        OUTPUT green_Led.value(1)
-        time.sleep(0.5)
-        OUTPUT green_Led.value(0)
-        time.sleep(0.5)
-    ENDWHILE
+    OUTPUT green_Led.value(1)
+    time.sleep(1)
+    OUTPUT green_Led.value(0)
+    time.sleep(1)
 END
 ```
 ```
@@ -77,7 +75,16 @@ BEGIN
 END
 ```     
 ### Flowchart Development
+INTRUSION PROTOCOL:
+![Intrusion](images/Int_Flow.png)
 
+SAFETY PROTOCOL:
+
+
+MAINLINE:
+![Mainline](images/Main_Flow.png)
+
+WHOLE:
 
 ## Development and Intergration
 ### Successful Code
