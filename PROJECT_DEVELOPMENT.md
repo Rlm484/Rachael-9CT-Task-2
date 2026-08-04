@@ -76,15 +76,20 @@ END
 ```     
 ### Flowchart Development
 INTRUSION PROTOCOL:
+
 ![Intrusion](images/Int_Flow.png)
 
 SAFETY PROTOCOL:
 
+![Intrusion](images/Int_Flow.png)
 
 MAINLINE:
+
 ![Mainline](images/Main_Flow.png)
 
 WHOLE:
+
+![Intrusion](images/Int_Flow.png)
 
 ## Development and Intergration
 ### Successful Code
