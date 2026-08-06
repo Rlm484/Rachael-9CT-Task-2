@@ -73,7 +73,8 @@ BEGIN
         ENDIF
     ENDWHILE
 END
-```     
+```   
+
 ### Flowchart Development
 INTRUSION PROTOCOL:
 
@@ -81,7 +82,7 @@ INTRUSION PROTOCOL:
 
 SAFETY PROTOCOL:
 
-![Intrusion](images/Int_Flow.png)
+![Safety](images/Saf_Flow.png)
 
 MAINLINE:
 
@@ -89,15 +90,51 @@ MAINLINE:
 
 WHOLE:
 
-![Intrusion](images/Int_Flow.png)
+![Full](images/ALL.png)
 
 ## Development and Intergration
-### Successful Code
+### First code attempt
+```
+from machine import Pin
+import time
+
+red_led = Pin(16, Pin.OUT)
+green_led = Pin(13, Pin.OUT)
+button = Pin(15, Pin.IN, Pin.PULL_DOWN   )
+
+normal = 1 ''' insert input for ultrasonic sensor'''
+#Temporary input for testing 
+def intrusion_protocol():
+    while True:
+        if button.value()==0: #System that starts alerting of a breakin
+            red_led.value(1)
+            time.sleep(0.5)
+            red_led.value(0)
+            time.sleep(0.5)
+            '''line of code for buzzer''' #Buzzer has been changed to continuously beep instead of for 30 secs; changed from original plan
+        else:
+            main()
+def safety_protocol(): #System that shows safety (like if I was studying with music in and cant hear buzzer I can visually see safety or intrusion)
+            green_led.value(1)
+            time.sleep(1)
+            green_led.value(0)
+            time.sleep(1)
+            
+def main(): #Main UI/program that fetches the protocol functions
+    while True:
+        current = 1 '''insert current input for ultrasonic sensor'''
+        #Temporary input for testing
+        if current < normal:
+            intrusion_protocol()
+        else: 
+            safety_protocol()
+```
 
 ## Testing and Debugging
 ### Test Cases
-|Test Case|Code|Notes|
+|Test Case|Code|Notes|Solution|
 |-|-|-|
+|Everything|normal=8|My D&I first code didn't work, it said that Line 8 had a syntax error||
 
 ## Evaluation
 ### Peer Evaluation
