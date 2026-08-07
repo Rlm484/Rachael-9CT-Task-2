@@ -133,8 +133,9 @@ def main(): #Main UI/program that fetches the protocol functions
 ## Testing and Debugging
 ### Test Cases
 |Test Case|Code|Notes|Solution|
-|-|-|-|
-|Everything|normal=8|My D&I first code didn't work, it said that Line 8 had a syntax error||
+|-|-|-|-|
+|Everything|normal=1 '''insert ultrasonic sensor code'''|My D&I first code didn't work, it said that Line 8 had a syntax error|With the help of google: Turns out docstrings cant be used after the equals sign, so it was interfering|
+|Safety Protocol|green_led.value(1)|The green_led won't turn on for some reason, even though the positive charges are matched and a resistor is used|With the help of: |
 
 ## Evaluation
 ### Peer Evaluation
