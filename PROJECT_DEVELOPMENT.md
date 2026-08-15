@@ -26,8 +26,9 @@ I will design a system that detects door movement, emitting the noise of sharp b
 ### Test Case/s
 | Test Case| Input    | Expected Output|
 |----------|----------|----------------|
-|Door is closed|Ultrasonic sensor sees that there is no obstruction|LED and Piezo remain dormant|
-|Door is opened|Ultrasonic sensor sees the obstruction|Red LED begins flashing continuously, and piezo starts beeping for 30 seconds|
+|Door is closed; Safety Protocol|Ultrasonic sensor sees that there is no obstruction|Safety protocol activates, beginning to flash the green led with the rest remaining dormant|
+|Door is opened; Intrusion Protocol|Ultrasonic sensor sees the obstruction|Red LED begins flashing continuously, and piezo starts beeping for 30 seconds|
+|Door is closed/opened; Sensor|Ultrasonic sensor sess/doesn't see an obstruction|Ultrasonic sensor sends data to the system, "informing it" which protocol to activate|
 
 ### Non-Functional Requirements
 Some non-functional requirements necessary to keep the security system optimised:
@@ -132,10 +133,21 @@ def main(): #Main UI/program that fetches the protocol functions
 
 ## Testing and Debugging
 ### Test Cases
-|Test Case|Code|Notes|Solution|
+### Safety Protocol:
+|Test Case|Code|Notes|Solution/Improvement|
 |-|-|-|-|
-|Everything|normal=1 '''insert ultrasonic sensor code'''|My D&I first code didn't work, it said that Line 8 had a syntax error|With the help of google: Turns out docstrings cant be used after the equals sign, so it was interfering|
-|Safety Protocol|green_led.value(1)|The green_led won't turn on for some reason, even though the positive charges are matched and a resistor is used|With the help of: |
+|Green LED|green_led.value(1)|The green_led won't turn on for some reason, even though the positive charges are matched and a resistor is used|With the help of [Mr Scott]: After grabbing a bigger breadboard and remaking the circuit at home, the code started working; I am assuming this is because I changed the resistor to a 22 ohm resistor|
+|Green LED|time.sleep(1)|The terminal states that "time" isn't defined|With the help of [Core Electronics]: I had only done "from time import sleep", I didn't actually import time, causing the NameError|
+
+### Evaluations for Safety Protocol test case:
+In regards to this test case, it was the simplest part of the security system, meaning it was easy for me to succesfully meet the test case requirements completely. The green LED flashes green, symbolising no intrusion, and the steps I took by rechecking my code, using a larger breadboard to make it easier to check errors along with asking for help when I needed it allowed me to correctly identify the problem and fix it in my code and physical circuit. What went particularly well was the fact that I didn't actually run into too many issues that had a high difficulty in fixing, meaning once I wired it at home it worked with little to no issue. In regard to what challenged me, it would mostly be the ciruit wiring. Before I switched to a larger breadboard, the LED just wouldn't work, frustrating me greatly and causing slight distress. Areas of program that could be improved is very little, due to this section of the code just being a flashing LED for the safety protocol.
+
+### Intrusion Protocol:
+|Test Case|Code|Notes|Solution/Improvement|
+|-|-|-|-|
+|Red LED|red_led.value(1) & time.sleep(0.25)|Much like the original issue with the green LED, the red LED was not turning on for seemingly no reason what so ever|With the help of  [N/A]: Turns out, and this is for the last testcase in safety protocol as well, I needed to have a wire connected from the GND pin and 3V3 OUT pin to the positive and negative lanes on the other side|
+|Piezo|alarm=Pin(11,Pin.OUT) & alarm.value(1)|
+
 
 ## Evaluation
 ### Peer Evaluation
