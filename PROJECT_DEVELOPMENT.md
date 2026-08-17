@@ -152,6 +152,11 @@ In regards to this test case, it was the simplest part of the security system, m
 ### Evaluations for Intrusion Protocol Test Case:
 In regards to this test case, I was mostly successful in creating the alarm system that scares off the intruder. [Though the system does not turn off the actual alarm noise after 30 seconds], the rest of the requirements were mostly successful in which was an overall positive outcome. The red LED flashes red at a faster pace than the green LED, symbolising intrusion, and the alarm continuously beeps at a steady rate. When discussing the steps I took however, they mostly included me looking at my code, realising I had made a silly mistake or trying something that might work, and having it just work. The main example of this is where I was testing the red LED, in which it wasn't working, and I had the random thought to use the two wires set up on the green LED side on the red LED side, powering the red LED as well. I had no clue this would work, but it did, so in the end it was a succesful test case. Following this, overall what went well was my gut instinct working out and usually leading me to the right answer, reflecting this however was the parts that challenged me. The biggest part that challenged me was the button section, in which I forgot how while loops worked and didn't trust the past code I had written in which accounted for this. Overall the areas of the program that could be improved would probably be [the alarm turning off after 30 seconds, which I unfortunately do not have the time, or skill, to achieve this function for now.]
 
+### Ultrasonic Sensor 
+|Test Case|Code|Notes|Solution/Improvement|
+|-|-|-|-|
+|Initial time|ini = 0 & ini = sound_speed * duration / (10000 * 2) & return ini|The variable didn't change even after it was returned from the function, causing the initial time to just not work at all as the variable wasn't set|The solution to this problem was the |
+|Current time|
 
 ## Evaluation
 ### Peer Evaluation

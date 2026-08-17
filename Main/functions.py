@@ -1,23 +1,39 @@
-from machine import Pin, time_pulse_us
-import time
+def safety_protocol(): # Protocol that causes the green LED to flash slowly to symbolise safety
+    green_led.value(1)
+    time.sleep(0.5)
+    green_led.value(0)
+    time.sleep(0.5)
 
-SOUND_SPEED=340 # Speed of Sound in Air (m/s)
-TRIG_PULSE_DURATION_US=10 # 10ms Pulse
+def intrusion_protocol(): # Protocol designed to scare off the intruder with loud noises and flashing lights
+    while True:
+        if button.value() == 0:
+            red_led.value(1)
+            alarm.value(1)
+            time.sleep(0.25)
+            red_led.value(0)
+            alarm.value(0)
+            time.sleep(0.25)
+        else:
+            break  # Stops the alarm once the button is pressed 
 
-trig_pin = Pin(9, Pin.OUT) 
-echo_pin = Pin(8, Pin.IN)  
-
-while True:
-    # Prepare le signal
-    trig_pin.value(0)
+def initial(): # Function that tracks the original distance with the ultrasonic distance
+    trigger.value(0)
     time.sleep_us(5)
-    # Créer une impulsion de 10 µs
-    trig_pin.value(1)
-    time.sleep_us(TRIG_PULSE_DURATION_US)
-    trig_pin.value(0)
+    trigger.value(1)
+    time.sleep_us(trig_pulse)
+    trigger.value(0)
 
-    ultrason_duration = time_pulse_us(echo_pin, 1, 30000) # Returns the wave propagation time (in µs)
-    distance_cm = SOUND_SPEED * ultrason_duration / (10000 * 2) # 10000 for micro to centi, times 2 bc there and back
+    duration = time_pulse_us(echo, 1, 30000) # Returns the wave propagation time (in µs)
+    ini = sound_speed * duration / (10000 * 2) # 10000 for micro to centi, times 2 bc there and back
+    return ini
 
-    print(f"Distance : {distance_cm} cm")
-    time.sleep_ms(500)
+def current(): # Function that tracks the current distance with the ultrasonic distance
+    trigger.value(0)
+    time.sleep_us(5)
+    trigger.value(1)
+    time.sleep_us(trig_pulse)
+    trigger.value(0)
+
+    duration = time_pulse_us(echo, 1, 30000) # Returns the wave propagation time (in µs)
+    curr = sound_speed * duration / (10000 * 2) # 10000 for micro to centi, times 2 bc there and back
+    return curr
