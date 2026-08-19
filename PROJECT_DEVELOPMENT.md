@@ -132,7 +132,6 @@ def main(): #Main UI/program that fetches the protocol functions
 ```
 
 ## Testing and Debugging
-### Test Cases
 ### Safety Protocol:
 |Test Case|Code|Notes|Solution/Improvement|
 |-|-|-|-|
@@ -155,11 +154,20 @@ In regards to this test case, I was mostly successful in creating the alarm syst
 ### Ultrasonic Sensor 
 |Test Case|Code|Notes|Solution/Improvement|
 |-|-|-|-|
-|Initial time|ini = 0 & ini = sound_speed * duration / (10000 * 2) & return ini|The variable didn't change even after it was returned from the function, causing the initial time to just not work at all as the variable wasn't set|The solution to this problem was the |
-|Current time|
+|Initial time|ini = 0 & ini = sound_speed * duration / (10000 * 2) & return ini|The variable didn't change even after it was returned from the function, causing the initial time to just not work at all as the variable wasn't set|With the help of  [Claude (NOTE: AI WAS ONLY USED FOR THIS AREA OF CODE, IN NO OTHER WAY WAS IT USED!!! JUST TO REALISE THE VARIABLE NEEDED TO BE EQUAL!)]: The solution to this problem was the fact that I had not made the actual variable with the same "name" equalate to the returned variable from the function (basically I didn't write: ini = initial()); after adding this line of code everything worked just fine.|
+|Current time|curr = 0 & curr = sound_speed * duration / (10000 * 2) & return ini|Due to the last function practically being the same, I didn't actually have any issues due to the process being the exact same. However, I do note that it successfully ran, initiating intrusion protocol when the initial time function's variable was greater than the current time variable.|N/A due to there being no issues or necessary/possible improvements (that I know of).|
+
+### Evaluations for Ultrasonic Sensor
+In regards to this test case, I was completely successful in creating a detection system using the ultrasonic sensor to detect obstructions, completely meeting the requirements of this section. The initial time function detects the time without any obstructions, and the current time checks it (adding 5 to reduce the margin of error because of the ultrasonic sensors inaccuracy), while comparing the distance to the initial period in order to determine obstructions. When looking at the steps I took to fix errors in this section, I do admit to using AI. This action was taken due to only having one error in my code and my knowledge not being enough at the time due to a mental block. This was the only time I used AI, which was resorted to after I triple checked my code and couldn't find the problem. In regard to went particularly well, I would say everything went well. My circuitry (for the msot part) and code went practically perfectly, and the ultrasonic sensor code ran smoothly with only the issue with equalation. However, in regard to what challenged me, it would be the connecting of the resistor for the ultrasonic sensor to the breadboard and sensor. The resistor would not stick in the wire connectors, and kept falling out, annoying me quite a bit; other than this however, there were no major challenges that affected me. When discussing improvements for this section based on results, there is actually little to add; the sensor code and wiring does what it needs to, fulfilling it's requirements and purpose in regard to the system.
+
+### Final Product:
+Please look inside the folder called videos to download an MP4 of my final project. (NOTE: THE MP4 UPLOADED IS TOO LARGE, AND WILL NEED TO HAVE THE RAW DOWNLOADED. KNOW, HOWEVER, THAT THERE IS ANOTHER VIDEO UPLOAD ON GOOGLE CLASSROOM FOR THE SUBMISSION)
+
+Code is under functions and main. (NOTE: In the actual file used for this, all functions and code was in one file. In this repo, for organisation sake, they have been seperated for an easier viewing experience.)
 
 ## Evaluation
 ### Peer Evaluation
+
 ### Individual Evaluation
 In relation to Peer Evaluation:
 
@@ -167,6 +175,6 @@ Achievment of overall requirements:
 
 Final Performance:
 
-Project Management
+Project Management:
 
 Suggestions for future improvement:
